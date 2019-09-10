@@ -2,9 +2,11 @@
 class Metric {
 
     private $label;
+    private $value;
 
-    public function __construct($label) {
+    public function __construct($label, $value) {
         $this->label = $label;
+        $this->value = $value;
     }
 
     public function toString ($label, $value) : string {
@@ -14,5 +16,9 @@ class Metric {
 
     public function getLabel() {
         return $this->label;
+    }
+
+    public function getValue () {
+        return $this->value;
     }
 }

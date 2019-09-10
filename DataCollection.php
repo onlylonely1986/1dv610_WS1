@@ -5,18 +5,22 @@ require_once("WordCount.php");
 require_once("CharCount.php");
 
 class DataCollection {
-
-    private $wordCount;
-    private $charCount;
-    private $data;
+    
+    private $dataCollection;
 
     public function __construct ($input) {
-        $this->wordCount = new WordCount($input);
-        $this->charCount = new CharCount($input);
-        $this->data = "{$this->wordCount->toString($this->wordCount->getLabel(), $this->wordCount->getWords())}{$this->charCount->toString($this->charCount->getLabel(), $this->charCount->getChars())}";
+        $this->dataCollection = $this->createArray($input);
+    }
+
+    public function createArray($input) {
+        return array(new WordCount($input), new CharCount($input));     
     }
 
     public function getData() {
-        return $this->data;
+        $data = "";
+        foreach($this->dataCollection as $metric) {
+            $data .= $metric->toString($metric->getLabel(), $metric->getValue());
+        }
+        return $data;
     }
 }

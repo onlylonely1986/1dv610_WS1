@@ -1,22 +1,13 @@
 <?php
 require_once("HTMLPageView.php");
-require_once("DataCollection.php");
+require_once("DataPresentation.php");
 
-//use these variables to create your instance of the class!
 
 $input = isset($_POST["input"]) ? trim($_POST["input"]) : "";
 
-$title = "Workshop 1 - Code Metrics";
-$dataCollection = new DataCollection($input);
-$body = "<h1>Code Metrics</h1>
+$dataPresentation = new DataPresentation($input);
 
-<form action=\"index.php\" method=\"post\">
-    <textarea rows=\"10\" cols=\"100\" type=\"text\" name=\"input\"></textarea>
-    <input type=\"submit\">
-</form>
-{$dataCollection->getData()}";
-
-$view = new HTMLPageView($title, $body);
+$view = new HTMLPageView($dataPresentation->title, $dataPresentation->getBody());
 
 $view->echoHTML();
 
