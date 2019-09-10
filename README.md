@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+
 # Code Metrics
 
 ## Mål
