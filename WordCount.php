@@ -1,15 +1,15 @@
 <?php 
-class WordCount {
+class WordCount extends Metric {
 
-    // private $source;
-    private $wordCount;
+    private $words;
+    private $label = "Number of words";
 
     public function __construct(string $source) {
-        $this->wordCount = str_word_count($source);
+        parent::__construct($this->label);
+        $this->words = str_word_count($source);
     }
 
-    public function toString () : string {
-        
-        return "<p>Number of words: {$this->wordCount}</p>";
+    public function getWords () {
+        return $this->words;
     }
 }

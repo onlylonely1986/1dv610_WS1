@@ -1,15 +1,15 @@
 <?php 
-class CharCount {
+class CharCount extends Metric {
 
-    // private $source;
-    private $charCount;
+    private $chars;
+    private $label = "Number of characters";
 
     public function __construct(string $source) {
-        $this->charCount = strlen($source);
+        parent::__construct($this->label);
+        $this->chars = strlen($source);
     }
 
-    public function toString () : string {
-        
-        return "<p>Number of characters: {$this->charCount}</p>";
+    public function getChars() {
+        return $this->chars;
     }
 }
